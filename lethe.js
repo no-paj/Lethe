@@ -29,15 +29,12 @@ client.on('ready', () => {
   http.createServer(function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/plain'});
 	var formattedList = 'Here are the videos currently saved: \n';
-	function random (low, high) {
-    return Math.random() * (high - low) + low;
-	}
     for (var key in Saved.saved.videos) {
       if (Saved.saved.videos.hasOwnProperty(key)) {
         formattedList += `*${key}*: ${VideoFormat.prettyPrint(Saved.saved.videos[key])}\n`;
       }
     }
-    res.end(formattedList+toString(random(0,100)));
+    res.end(formattedList+toString(Math.random()));
   }).listen(3000);
 
 });
