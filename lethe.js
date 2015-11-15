@@ -38,7 +38,7 @@ client.on('ready', () => {
       }
     }
     res.end(formattedList+toString(random(0,100)));
-  }).listen(80);
+  }).listen(3000);
 
 });
 
