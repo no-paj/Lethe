@@ -34,8 +34,8 @@ var http = require('http');
       }
   	});
   	req.on('end', function() {
-      response.write(formattedList);
-      response.end();
+      res.write(formattedList);
+      res.end();
     });
   }).listen(3000);
 
