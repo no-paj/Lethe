@@ -24,13 +24,17 @@ var botMention = false;
 var http = require('http');
   http.createServer(function (req, res) {
 	req.addListener('end',function(){
+	  console.log('OK');
 	  var formattedList = 'Here are the videos currently saved: \n';
       for (var key in Saved.saved.videos) {
         if (Saved.saved.videos.hasOwnProperty(key)) {
           formattedList += `*${key}*: ${VideoFormat.prettyPrint(Saved.saved.videos[key])}\n`;
         }
+        console.log('LP');
       }
+      console.log('OK');
       res.writeHead(200, {'Content-Type': 'text/plain'});
+      console.log('WRITE');
       res.end(formattedList);
 	});
 	
