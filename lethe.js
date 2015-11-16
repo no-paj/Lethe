@@ -23,8 +23,8 @@ var botMention = false;
 
 var http = require('http');
   http.createServer(function (req, res) {
-	req.addListener('end',function(){
-	  console.log('OK');
+  	req.on('data', function(d){
+  	  console.log('OK');
 	  var formattedList = 'Here are the videos currently saved: \n';
       for (var key in Saved.saved.videos) {
         if (Saved.saved.videos.hasOwnProperty(key)) {
@@ -32,12 +32,11 @@ var http = require('http');
         }
         console.log('LP');
       }
-      console.log('OK');
-      res.writeHead(200, {'Content-Type': 'text/plain'});
-      console.log('WRITE');
-      res.end(formattedList);
-	});
-	
+  	});
+  	req.on('end', function() {
+      response.write(formattedList);
+      response.end();
+    });
   }).listen(3000);
 
 client.on('ready', () => {
