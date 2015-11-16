@@ -30,7 +30,7 @@ var http = require('http');
         formattedList += `*${key}*: ${VideoFormat.prettyPrint(Saved.saved.videos[key])}\n`;
       }
     }
-    res.end(formattedList+toString(Math.random()));
+    res.end(formattedList);
   }).listen(3000);
 
 client.on('ready', () => {
