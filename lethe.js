@@ -23,7 +23,7 @@ var botMention = false;
 
 var http = require('http');
   http.createServer(function (req, res) {
-  	req.on('data', function(d){
+  	req.on('end', function(d){
   	  console.log('OK');
 	  var formattedList = 'Here are the videos currently saved: \n';
       for (var key in Saved.saved.videos) {
@@ -32,11 +32,9 @@ var http = require('http');
         }
         console.log('LP');
       }
-  	});
-  	req.on('end', function() {
       res.write(formattedList);
       res.end();
-    });
+  	});
   }).listen(3000);
 
 client.on('ready', () => {
