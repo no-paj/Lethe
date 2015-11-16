@@ -21,11 +21,7 @@ var currentVideo = false;
 
 var botMention = false;
 
-client.on('ready', () => {
-  botMention = `<@${client.internal.user.id}>`;
-  console.log(`Bot mention: ${botMention}`);
-
-  var http = require('http');
+var http = require('http');
   http.createServer(function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/plain'});
 	var formattedList = 'Here are the videos currently saved: \n';
@@ -36,6 +32,10 @@ client.on('ready', () => {
     }
     res.end(formattedList+toString(Math.random()));
   }).listen(3000);
+
+client.on('ready', () => {
+  botMention = `<@${client.internal.user.id}>`;
+  console.log(`Bot mention: ${botMention}`);
 
 });
 
